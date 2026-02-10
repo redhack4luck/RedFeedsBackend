@@ -40,6 +40,11 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Keep-alive endpoint to prevent Render from sleeping
+app.get('/api/ping', (req, res) => {
+  res.status(200).send('pong');
+});
+
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
